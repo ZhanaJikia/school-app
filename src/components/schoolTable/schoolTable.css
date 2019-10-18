@@ -1,0 +1,27 @@
+.content-wrapp {
+  padding-top: 20%;
+  max-width: 1170px;
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+}
+
+.split {
+  height: 100%;
+  width: 45%;
+  position: fixed;
+  z-index: 1;
+  overflow-x: hidden;
+  padding-top: 20%;
+}
+
+.left {
+  left: 2%;
+}
+
+.right {
+  padding-top: 21.5%;
+  right: 2%;
+}
+
