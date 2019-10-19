@@ -45,9 +45,9 @@ const SchoolTable = ({ schools, currentStudents, setCurrentStudents, setStudents
     setOpen(true);
   };
 
-  const handleClose = () => {
-    setOpen(false);
-  };
+  // const handleClose = () => {
+  //   setOpen(false);
+  // };
 
   return (
     <div className="content-wrapp">
