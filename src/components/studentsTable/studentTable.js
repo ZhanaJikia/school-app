@@ -7,7 +7,7 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 
-import StudentForm from '../studentForm/StudentForm'
+import StudentForm from '../studentForm'
 import "../schoolTable/schoolTable.css";
 import "./modal.css";
 

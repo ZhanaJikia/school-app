@@ -1,7 +1,7 @@
 import React from "react";
 import { Formik } from "formik";
 import * as Yup from "yup";
-import "../schoolForm/form.css"
+import "./validated-form.css"
 import {v4 as uuid} from 'uuid';
 
 const ValidatedSchoolForm = props => (
