@@ -1,5 +1,4 @@
 import React from "react";
-import "../schoolForm/schoolForm.css";
 
 
 export class SchoolForm extends React.Component {

@@ -16,7 +16,7 @@ const ValidatedSchoolForm = props => (
       setTimeout(() => {
         values.id=uuid();
         values.students = [];
-        props.handleAdd(values); // Giving parrent school Data
+        props.handleAdd(values);
         setSubmitting(false);
         resetForm()
       }, 500);

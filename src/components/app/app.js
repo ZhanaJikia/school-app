@@ -1,13 +1,13 @@
-import React from "react";
-import ValidatedSchoolForm from '../schoolForm/validatedSchoolForm';
-import SchoolTable from '../schoolTable/schoolTable';
-import '../studentsTable/studentTable';
+import React, {Component} from "react";
+import ValidatedSchoolForm from '../schoolForm';
+import SchoolTable from '../schoolTable';
+import '../studentsTable';
 import "./app.css";
 
 
 const globalData = [
   {
-    id: 1,
+    id: 3,
     schoolName: "№34",
     address: "Chavchavadze 23",
     students: [
@@ -26,7 +26,7 @@ const globalData = [
     ]
   },
   {
-    id: 3,
+    id: 1,
     schoolName: "№108",
     address: "Tsereteli 3",
     students: [
@@ -36,7 +36,8 @@ const globalData = [
   }
 ];
 
-export default class App extends React.Component {
+export default class App extends Component {
+
   state = {
     schools: globalData,
     currentStudents: []
@@ -62,6 +63,22 @@ export default class App extends React.Component {
     this.setState({ currentStudents: students })
   )
 
+  onDeleted = (id) => {
+    this.setState( ({ schools }) => {
+      const index = schools.findIndex( (el) => el.id === id);
+
+      const newSchools = [ 
+        ...schools.slice(0, index),
+        ...schools.slice(index + 1) 
+      ];
+      
+      return {
+        schools: newSchools
+      }
+    })
+  };
+  
+
   render(){
     return (
       <div className="App">
@@ -72,6 +89,7 @@ export default class App extends React.Component {
         />
         <SchoolTable
           schools={this.state.schools}
+          onDeleted={this.onDeleted}
           setStudents={this.setStudents}
           students={this.state.students}
           setCurrentStudents={this.setCurrentStudents}
