@@ -6,7 +6,6 @@ import TableCell from "@material-ui/core/TableCell";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
-
 import StudentForm from '../studentForm'
 import "../schoolTable/schoolTable.css";
 import "./modal.css";
@@ -24,7 +23,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const StudentTable = ({ students, setStudents, id }) => {
+const StudentTable = ({ students, setStudents, id, onDeleted }) => {
   const classes = useStyles();
   const [isOpen, setIsOpen] = useState(false)
 
@@ -51,6 +50,14 @@ const StudentTable = ({ students, setStudents, id }) => {
                 </TableCell>
                 <TableCell>{student.email}</TableCell>
                 <TableCell>{student.age}</TableCell>
+                <TableCell align="right">{
+                    <button
+                      className="btn btn-outline-danger btn-sm float-right" 
+                      onClick={ () => onDeleted(students.email) }>
+                      <i className="fa fa-trash-o"/>
+                    </button> 
+                    }
+                </TableCell>
               </TableRow>
             ))}
           </TableBody>

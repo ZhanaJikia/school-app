@@ -1,3 +1,3 @@
-import MaterialModal from './deleteModal';
+import DeleteModal from './deleteModal';
 
-export default MaterialModal;
+export default DeleteModal;

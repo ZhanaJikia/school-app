@@ -77,6 +77,21 @@ export default class App extends Component {
       }
     })
   };
+
+  // onDeleted = (email) => {
+  //   this.setState( ({ schools }) => {
+  //     const index = schools.findIndex( (el) => el.id === id);
+
+  //     const newSchools = [ 
+  //       ...schools.slice(0, index),
+  //       ...schools.slice(index + 1) 
+  //     ];
+      
+  //     return {
+  //       schools: newSchools
+  //     }
+  //   })
+  // };
   
 
   render(){

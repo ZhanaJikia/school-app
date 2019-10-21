@@ -7,7 +7,8 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-import StudentTable from "../studentsTable/studentTable"
+import StudentTable from "../studentsTable/studentTable";
+import DeleteModal from '../deleteModal/index';
 import "./schoolTable.css"
 
 
@@ -35,7 +36,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const SchoolTable = ({ schools, currentStudents, setCurrentStudents, setStudents, onDeleted }) => {
-
+  const [deleteModalOpen, setDeleteModalOpen] = useState(false)
   const [open, setOpen] = useState(false)
   const [id, setId] = useState()
   const classes = useStyles();
@@ -66,6 +67,7 @@ const SchoolTable = ({ schools, currentStudents, setCurrentStudents, setStudents
             <TableBody>
               {schools.map(row => (
                 <TableRow>
+                {deleteModalOpen && (<DeleteModal onDeleted={onDeleted} setDeleteModalOpen={setDeleteModalOpen} row={row}/>)}
                   <TableCell component="th" scope="row"
                     onClick={ () => handleOpen(row.students, row.id) } key={row.id} className={classes.pointer}>
                   {row.schoolName}
@@ -75,7 +77,7 @@ const SchoolTable = ({ schools, currentStudents, setCurrentStudents, setStudents
                   <TableCell align="right">{
                     <button
                       className="btn btn-outline-danger btn-sm float-right" 
-                      onClick={ () => onDeleted(row.id) }>
+                      onClick={ () => setDeleteModalOpen(true) }>
                       <i className="fa fa-trash-o"/>
                     </button> 
                     }

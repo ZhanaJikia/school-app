@@ -11,38 +11,35 @@ const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
-export default AlertDialogSlide = () =>  {
+const DeleteModal = ({row, onDeleted, setDeleteModalOpen}) =>  {
   const [open, setOpen] = React.useState(false);
 
-  const handleClickOpen = () => {
-    setOpen(true);
+  const onCancel = () => {
+    setDeleteModalOpen(false);
   };
 
   const handleClose = () => {
-    setOpen(false);
+    onDeleted(row.id)
+    setDeleteModalOpen(false);
   };
 
   return (
     <div>
-      <Button variant="outlined" color="primary" onClick={handleClickOpen}>
-        Slide in alert dialog
-      </Button>
       <Dialog
-        open={open}
+        open={setDeleteModalOpen}
         TransitionComponent={Transition}
         keepMounted
         onClose={handleClose}
         aria-labelledby="alert-dialog-slide-title"
         aria-describedby="alert-dialog-slide-description"
       >
-        <DialogTitle id="alert-dialog-slide-title">{"Use Google's location service?"}</DialogTitle>
+        <DialogTitle id="alert-dialog-slide-title">{"Are you sure you want to delete this?"}</DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-slide-description">
-          Are you sure you want to delete this?
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose} color="primary">
+          <Button onClick={onCancel} color="primary">
             Cancel
           </Button>
           <Button onClick={handleClose} color="primary">
@@ -53,3 +50,6 @@ export default AlertDialogSlide = () =>  {
     </div>
   );
 }
+
+
+export default DeleteModal;
