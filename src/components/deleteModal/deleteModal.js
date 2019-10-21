@@ -11,17 +11,21 @@ const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
-const DeleteModal = ({row, onDeleted, setDeleteModalOpen}) =>  {
-  const [open, setOpen] = React.useState(false);
-
+const DeleteModal = ({row, student, onDeleted, deleteStudent, setDeleteModalOpen, id }) =>  {
+  // const [open, setOpen] = React.useState(false);
+  
+  console.log('student' ,student)
   const onCancel = () => {
     setDeleteModalOpen(false);
   };
 
   const handleClose = () => {
-    onDeleted(row.id)
-    setDeleteModalOpen(false);
+    if (row) onDeleted(row.id)
+    else deleteStudent(student.email, id)
+    setDeleteModalOpen(false)
   };
+
+
 
   return (
     <div>

@@ -35,7 +35,7 @@ const useStyles = makeStyles(theme => ({
 
 }));
 
-const SchoolTable = ({ schools, currentStudents, setCurrentStudents, setStudents, onDeleted }) => {
+const SchoolTable = ({ schools, currentStudents, setCurrentStudents, setStudents, onDeleted ,deleteStudent}) => {
   const [deleteModalOpen, setDeleteModalOpen] = useState(false)
   const [open, setOpen] = useState(false)
   const [id, setId] = useState()
@@ -90,7 +90,7 @@ const SchoolTable = ({ schools, currentStudents, setCurrentStudents, setStudents
       </div>
 
       <div className="split right">
-        <StudentTable students={currentStudents} setStudents={setStudents} id={id} />
+        <StudentTable students={currentStudents} setStudents={setStudents} id={id} deleteStudent={deleteStudent} />
        </div>
     </div>
   );
