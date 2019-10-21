@@ -87,14 +87,6 @@ export default class App extends Component {
           schools={this.state.schools}
           handleAdd={this.callbackFunction}
         />
-        {/* <SchoolTable
-          schools={this.state.schools}
-          onDeleted={this.onDeleted}
-          setStudents={this.setStudents}
-          students={this.state.students}
-          setCurrentStudents={this.setCurrentStudents}
-          currentStudents={this.state.currentStudents}
-        /> */}
         <SchoolTable
           schools={this.state.schools}
           setStudents={this.setStudents}

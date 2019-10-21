@@ -60,13 +60,15 @@ const SchoolTable = ({ schools, currentStudents, setCurrentStudents, setStudents
                 <TableCell>School Name</TableCell>
                 <TableCell align="right">Address</TableCell>
                 <TableCell align="right">ID</TableCell>
+                <TableCell align="right"></TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
               {schools.map(row => (
-                <TableRow onClick={ () => handleOpen(row.students, row.id) } key={row.id} className={classes.pointer}>
-                  <TableCell component="th" scope="row">
-                    {row.schoolName}
+                <TableRow>
+                  <TableCell component="th" scope="row"
+                    onClick={ () => handleOpen(row.students, row.id) } key={row.id} className={classes.pointer}>
+                  {row.schoolName}
                   </TableCell>
                   <TableCell align="right">{row.address}</TableCell>
                   <TableCell align="right">{row.id}</TableCell>
