@@ -6,7 +6,8 @@ import TableCell from "@material-ui/core/TableCell";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
-import StudentForm from '../studentForm'
+import StudentForm from '../studentForm';
+import DeleteModal from '../deleteModal/index';
 import "../schoolTable/schoolTable.css";
 import "./modal.css";
 
@@ -23,7 +24,8 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const StudentTable = ({ students, setStudents, id, onDeleted }) => {
+const StudentTable = ({ students, setStudents, id, deleteStudent }) => {
+  const [deleteModalOpen, setDeleteModalOpen] = useState(false)
   const classes = useStyles();
   const [isOpen, setIsOpen] = useState(false)
 
@@ -40,24 +42,35 @@ const StudentTable = ({ students, setStudents, id, onDeleted }) => {
               <TableCell>Full Name</TableCell>
               <TableCell>Email</TableCell>
               <TableCell>Age</TableCell>
+              <TableCell></TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
             {students.map(student => (
               <TableRow key={student.name} className={classes.pointer}>
+                {deleteModalOpen && (<DeleteModal deleteStudent={deleteStudent} setDeleteModalOpen={setDeleteModalOpen} student={student} id={id} />)}
                 <TableCell component="th" scope="row">
                   {student.fullName}
                 </TableCell>
                 <TableCell>{student.email}</TableCell>
                 <TableCell>{student.age}</TableCell>
-                <TableCell align="right">{
+                {/* <TableCell align="right">{
                     <button
                       className="btn btn-outline-danger btn-sm float-right" 
-                      onClick={ () => onDeleted(students.email) }>
+                      onClick={ () => deleteStudent(students.email, id) }>
                       <i className="fa fa-trash-o"/>
                     </button> 
                     }
-                </TableCell>
+                </TableCell> */}
+                  <TableCell align="right">{
+                    <button
+                      className="btn btn-outline-danger btn-sm float-right" 
+                      onClick={ () => setDeleteModalOpen(true) }>
+                      <i className="fa fa-trash-o"/>
+                    </button> 
+                    }
+                  </TableCell>
+
               </TableRow>
             ))}
           </TableBody>

@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import ValidatedSchoolForm from '../schoolForm';
 import SchoolTable from '../schoolTable';
+import StudentTable from '../studentsTable';
 import '../studentsTable';
 import "./app.css";
 
@@ -78,20 +79,25 @@ export default class App extends Component {
     })
   };
 
-  // onDeleted = (email) => {
-  //   this.setState( ({ schools }) => {
-  //     const index = schools.findIndex( (el) => el.id === id);
+  deleteStudent = (email, id) => {
+    this.setState( ({ schools }) => {
+      const index = schools.findIndex( (el) => el.id === id);
 
-  //     const newSchools = [ 
-  //       ...schools.slice(0, index),
-  //       ...schools.slice(index + 1) 
-  //     ];
+      const currSchool = schools[index]
+
+      const newStudents = currSchool.students.filter(student => student.email !== email)
+      console.log(newStudents)
+
+
+      schools = schools.map(school => school.id !== id ? school : { ...school, students: newStudents })
+      console.log(schools)
       
-  //     return {
-  //       schools: newSchools
-  //     }
-  //   })
-  // };
+      return {
+        schools,
+        currentStudents: newStudents
+      }
+    })
+  };
   
 
   render(){
@@ -109,7 +115,12 @@ export default class App extends Component {
           setCurrentStudents={this.setCurrentStudents}
           currentStudents={this.state.currentStudents}
           onDeleted={this.onDeleted}
+          deleteStudent={this.deleteStudent}
         />
+        {/* <StudentTable 
+          // students={this.state.students}
+          deleteStudent={this.deleteStudent}
+        /> */}
       </div>
     );
   }
