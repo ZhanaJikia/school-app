@@ -1,7 +1,7 @@
 import React from "react";
 import { Formik } from "formik";
 import * as Yup from "yup";
-import "./validated-form.css"
+import "../schoolForm/form.css"
 import {v4 as uuid} from 'uuid';
 
 const ValidatedSchoolForm = props => (
@@ -16,7 +16,7 @@ const ValidatedSchoolForm = props => (
       setTimeout(() => {
         values.id=uuid();
         values.students = [];
-        props.handleAdd(values);
+        props.handleAdd(values); // Giving parrent school Data
         setSubmitting(false);
         resetForm()
       }, 500);

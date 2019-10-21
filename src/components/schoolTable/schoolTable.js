@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
@@ -6,8 +7,7 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-import StudentTable from "../studentsTable";
-import Button from '@material-ui/core/Button';
+import StudentTable from "../studentsTable/studentTable"
 import "./schoolTable.css"
 
 
@@ -46,9 +46,9 @@ const SchoolTable = ({ schools, currentStudents, setCurrentStudents, setStudents
     setOpen(true);
   };
 
-  // const handleClose = () => {
-  //   setOpen(false);
-  // };
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   return (
     <div className="content-wrapp">
@@ -60,26 +60,22 @@ const SchoolTable = ({ schools, currentStudents, setCurrentStudents, setStudents
                 <TableCell>School Name</TableCell>
                 <TableCell align="right">Address</TableCell>
                 <TableCell align="right">ID</TableCell>
-                <TableCell align="right"></TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
               {schools.map(row => (
-                <TableRow >
-                  <TableCell component="th" scope="row"
-                    onClick={ () => handleOpen(row.students, row.id) } key={row.id} className={classes.pointer}>
+                <TableRow onClick={ () => handleOpen(row.students, row.id) } key={row.id} className={classes.pointer}>
+                  <TableCell component="th" scope="row">
                     {row.schoolName}
                   </TableCell>
-                  <TableCell align="right"
-                    onClick={ () => handleOpen(row.students, row.id) } key={row.id} className={classes.pointer}>
-                    {row.address}</TableCell>
+                  <TableCell align="right">{row.address}</TableCell>
                   <TableCell align="right">{row.id}</TableCell>
                   <TableCell align="right">{
-                    <Button
+                    <button
                       className="btn btn-outline-danger btn-sm float-right" 
                       onClick={ () => onDeleted(row.id) }>
                       <i className="fa fa-trash-o"/>
-                    </Button> 
+                    </button> 
                     }
                   </TableCell>
                 </TableRow>
@@ -87,8 +83,6 @@ const SchoolTable = ({ schools, currentStudents, setCurrentStudents, setStudents
             </TableBody>
           </Table>
         </Paper>
-        
-        
       </div>
 
       <div className="split right">

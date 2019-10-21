@@ -1,3 +1,3 @@
-import StudentForm from './studentForm';
+import StudentForm from './StudentForm'
 
 export default StudentForm;
