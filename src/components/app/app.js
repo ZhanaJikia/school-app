@@ -90,8 +90,13 @@ export default class App extends Component {
 
       const newStudents = currSchool.students.filter(student => student.email !== email)
       console.log(newStudents)
+<<<<<<< HEAD
 
 
+=======
+
+
+>>>>>>> origin
       schools = schools.map(school => school.id !== id ? school : { ...school, students: newStudents })
       console.log(schools)
       
@@ -120,7 +125,14 @@ export default class App extends Component {
           onDeleted={this.onDeleted}
           deleteStudent={this.deleteStudent}
         />
+<<<<<<< HEAD
 
+=======
+        {/* <StudentTable 
+          // students={this.state.students}
+          deleteStudent={this.deleteStudent}
+        /> */}
+>>>>>>> origin
       </div>
     );
   }
