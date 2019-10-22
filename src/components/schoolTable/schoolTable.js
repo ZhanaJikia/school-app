@@ -65,9 +65,9 @@ const SchoolTable = ({ schools, currentStudents, setCurrentStudents, setStudents
               </TableRow>
             </TableHead>
             <TableBody>
+              {deleteModalOpen && (<DeleteModal onDeleted={onDeleted} setDeleteModalOpen={setDeleteModalOpen} row={deleteModalOpen}/>)}
               {schools.map(row => (
                 <TableRow>
-                {deleteModalOpen && (<DeleteModal onDeleted={onDeleted} setDeleteModalOpen={setDeleteModalOpen} row={row}/>)}
                   <TableCell component="th" scope="row"
                     onClick={ () => handleOpen(row.students, row.id) } key={row.id} className={classes.pointer}>
                   {row.schoolName}
@@ -77,7 +77,7 @@ const SchoolTable = ({ schools, currentStudents, setCurrentStudents, setStudents
                   <TableCell align="right">{
                     <button
                       className="btn btn-outline-danger btn-sm float-right" 
-                      onClick={ () => setDeleteModalOpen(true) }>
+                      onClick={ () => setDeleteModalOpen(row) }>
                       <i className="fa fa-trash-o"/>
                     </button> 
                     }

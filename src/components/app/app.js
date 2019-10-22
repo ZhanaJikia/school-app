@@ -66,12 +66,15 @@ export default class App extends Component {
 
   onDeleted = (id) => {
     this.setState( ({ schools }) => {
-      const index = schools.findIndex( (el) => el.id === id);
+      // const index = schools.findIndex( (el) => el.id === id);
 
-      const newSchools = [ 
-        ...schools.slice(0, index),
-        ...schools.slice(index + 1) 
-      ];
+      // const newSchools = [ 
+        // ...schools.slice(0, index),
+        // ...schools.slice(index + 1) 
+      // ];
+
+    const newSchools = schools.filter(item => item.id !== id)
+    console.log("zanaaaa", id)
       
       return {
         schools: newSchools
@@ -117,10 +120,7 @@ export default class App extends Component {
           onDeleted={this.onDeleted}
           deleteStudent={this.deleteStudent}
         />
-        {/* <StudentTable 
-          // students={this.state.students}
-          deleteStudent={this.deleteStudent}
-        /> */}
+
       </div>
     );
   }

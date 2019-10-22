@@ -20,6 +20,7 @@ const DeleteModal = ({row, student, onDeleted, deleteStudent, setDeleteModalOpen
   };
 
   const handleClose = () => {
+    console.log('enuqa', row.id)
     if (row) onDeleted(row.id)
     else deleteStudent(student.email, id)
     setDeleteModalOpen(false)
@@ -54,6 +55,5 @@ const DeleteModal = ({row, student, onDeleted, deleteStudent, setDeleteModalOpen
     </div>
   );
 }
-
 
 export default DeleteModal;
