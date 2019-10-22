@@ -66,15 +66,7 @@ export default class App extends Component {
 
   onDeleted = (id) => {
     this.setState( ({ schools }) => {
-      // const index = schools.findIndex( (el) => el.id === id);
-
-      // const newSchools = [ 
-        // ...schools.slice(0, index),
-        // ...schools.slice(index + 1) 
-      // ];
-
     const newSchools = schools.filter(item => item.id !== id)
-    console.log("zanaaaa", id)
       
       return {
         schools: newSchools
@@ -90,13 +82,7 @@ export default class App extends Component {
 
       const newStudents = currSchool.students.filter(student => student.email !== email)
       console.log(newStudents)
-<<<<<<< HEAD
 
-
-=======
-
-
->>>>>>> origin
       schools = schools.map(school => school.id !== id ? school : { ...school, students: newStudents })
       console.log(schools)
       
@@ -125,14 +111,6 @@ export default class App extends Component {
           onDeleted={this.onDeleted}
           deleteStudent={this.deleteStudent}
         />
-<<<<<<< HEAD
-
-=======
-        {/* <StudentTable 
-          // students={this.state.students}
-          deleteStudent={this.deleteStudent}
-        /> */}
->>>>>>> origin
       </div>
     );
   }
